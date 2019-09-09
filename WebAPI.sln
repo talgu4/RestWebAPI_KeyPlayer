@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyPlayer.Data", "KeyPlayer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyPlayer.Service", "KeyPlayer.Service\KeyPlayer.Service.csproj", "{353F8847-8AFC-433A-8F4F-2AA81F197ADF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyPlayer.Infrastructure", "KeyPlayer.Infrastructure\KeyPlayer.Infrastructure.csproj", "{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{353F8847-8AFC-433A-8F4F-2AA81F197ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{353F8847-8AFC-433A-8F4F-2AA81F197ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{353F8847-8AFC-433A-8F4F-2AA81F197ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

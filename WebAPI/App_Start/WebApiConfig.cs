@@ -12,9 +12,7 @@ namespace WebAPI
         public static void Register(HttpConfiguration config)
         {
             BootstrapperConfig.Register();
-            // Web API configuration and services
-
-            // Web API routes
+            
             config.MapHttpAttributeRoutes();
 
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =

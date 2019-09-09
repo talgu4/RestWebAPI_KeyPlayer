@@ -10,8 +10,10 @@ namespace KeyPlayer.Data.Repository
 { 
     public class CountryRepository : BaseRepository<Country>, ICountryRepository
     {
-        public CountryRepository(IDbFactory dbFactory)
-            : base(dbFactory) { }
+        public CountryRepository(KeyPlayerContext dataContext) : base(dataContext)
+        {
+
+        }
     }
 
     public interface ICountryRepository : IRepository<Country>

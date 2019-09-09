@@ -15,9 +15,9 @@ namespace KeyPlayer.Service
     }
     public class TeamService : ITeamsService
     {
-        private readonly ITeamService _teamRepository;
+        private readonly ITeamRepository _teamRepository;
 
-        public TeamService(ITeamService teamRepository)
+        public TeamService(ITeamRepository teamRepository)
         {
             _teamRepository = teamRepository;
         }

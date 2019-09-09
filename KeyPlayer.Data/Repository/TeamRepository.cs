@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace KeyPlayer.Data.Repository
 {
-    public class TeamRepository : BaseRepository<Team>, ITeamService
+    public class TeamRepository : BaseRepository<Team>, ITeamRepository
     {
-        public TeamRepository(IDbFactory dbFactory)
-            : base(dbFactory) { }
+        public TeamRepository(KeyPlayerContext ctx) : base(ctx)
+        {
+        }
 
         public Team GetTeamByName(string teamName)
         {
@@ -30,7 +31,7 @@ namespace KeyPlayer.Data.Repository
         }
     }
 
-    public interface ITeamService : IRepository<Team>
+    public interface ITeamRepository : IRepository<Team>
     {
         Team GetTeamByName(string teamName);
         Task<IEnumerable<Team>> GetTeamsAsync(bool includePlayers = false);

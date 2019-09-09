@@ -48,13 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContainerRegistrations.cs" />
     <Compile Include="KeyPlayer.cs" />
     <Compile Include="Entities\Country.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\Team.cs" />
-    <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\Disposable.cs" />
-    <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="KeyPlayerSeedData.cs" />
     <Compile Include="Model\PlayerModel.cs" />
@@ -64,11 +63,16 @@
     <Compile Include="Repository\CountryRepository.cs" />
     <Compile Include="Repository\PlayerRepository.cs" />
     <Compile Include="Repository\TeamRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KeyPlayer.Common\KeyPlayer.Common.csproj">
       <Project>{CDA384C5-D748-4365-8638-5046A4F172F0}</Project>
       <Name>KeyPlayer.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KeyPlayer.Infrastructure\KeyPlayer.Infrastructure.csproj">
+      <Project>{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}</Project>
+      <Name>KeyPlayer.Infrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -10,22 +10,17 @@ namespace KeyPlayer.Data.Infrastructure
 {
     public abstract class BaseRepository<T> where T :class
     {
-        private KeyPlayerContext dataContext;
+        private KeyPlayerContext _dataContext;
         private readonly IDbSet<T> dbSet;
 
-        protected IDbFactory DbFactory
-        {
-            get;
-            private set;
-        }
         protected KeyPlayerContext DbContext
         {
-            get { return dataContext ?? (dataContext = DbFactory.Init()); }
+            get { return _dataContext; }
         }
-        protected BaseRepository(IDbFactory dbFactory)
+        protected BaseRepository(KeyPlayerContext dataContext)
         {
-            DbFactory = dbFactory;
-            dbSet = DbContext.Set<T>();
+            _dataContext = dataContext;
+            dbSet = dataContext.Set<T>();
         }
 
         #region Implementation
@@ -37,7 +32,7 @@ namespace KeyPlayer.Data.Infrastructure
         public virtual void Update(T entity)
         {
             dbSet.Attach(entity);
-            dataContext.Entry(entity).State = EntityState.Modified;
+            _dataContext.Entry(entity).State = EntityState.Modified;
         }
 
         public virtual void Delete(T entity)

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{353F8847-8AFC-433A-8F4F-2AA81F197ADF}</ProjectGuid>
+    <ProjectGuid>{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KeyPlayer.Service</RootNamespace>
-    <AssemblyName>KeyPlayer.Service</AssemblyName>
+    <RootNamespace>KeyPlayer.Infrastructure</RootNamespace>
+    <AssemblyName>KeyPlayer.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,20 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayerService.cs" />
+    <Compile Include="ContainerExtensions.cs" />
+    <Compile Include="Interfaces\IContainer.cs" />
+    <Compile Include="Interfaces\IContainerRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceContainerRegistrations.cs" />
-    <Compile Include="TeamService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\KeyPlayer.Data\KeyPlayer.Data.csproj">
-      <Project>{C2325FAC-1A63-4F43-912F-5E316F526F15}</Project>
-      <Name>KeyPlayer.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\KeyPlayer.Infrastructure\KeyPlayer.Infrastructure.csproj">
-      <Project>{2E523D84-538A-4A3F-B0D6-B60CF4DC6257}</Project>
-      <Name>KeyPlayer.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

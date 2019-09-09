@@ -11,8 +11,9 @@ namespace KeyPlayer.Data.Repository
 { 
     public class PlayerRepository : BaseRepository<Player>, IPlayerRepository
     {
-        public PlayerRepository(IDbFactory dbFactory)
-            : base(dbFactory) { }
+        public PlayerRepository(KeyPlayerContext ctx) : base(ctx)
+        {
+        }
 
         public IEnumerable<Player> GetAllAsync(int teamId)
         {

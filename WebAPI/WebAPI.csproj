@@ -177,6 +177,10 @@
       <Project>{c2325fac-1a63-4f43-912f-5e316f526f15}</Project>
       <Name>KeyPlayer.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KeyPlayer.Infrastructure\KeyPlayer.Infrastructure.csproj">
+      <Project>{2e523d84-538a-4a3f-b0d6-b60cf4dc6257}</Project>
+      <Name>KeyPlayer.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KeyPlayer.Service\KeyPlayer.Service.csproj">
       <Project>{353F8847-8AFC-433A-8F4F-2AA81F197ADF}</Project>
       <Name>KeyPlayer.Service</Name>

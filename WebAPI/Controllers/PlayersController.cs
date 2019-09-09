@@ -17,10 +17,10 @@ namespace WebAPI.Controllers
     public class PlayersController : ApiController
     {
         private readonly IPlayerService _playerService;
-        private readonly ITeamService _teamService;
+        private readonly ITeamRepository _teamService;
         private readonly IMapper _mapper;
 
-        public PlayersController(IMapper mapper,ITeamService teamService, IPlayerService playerService)
+        public PlayersController(IMapper mapper,ITeamRepository teamService, IPlayerService playerService)
         { 
             _playerService = playerService;
             _teamService = teamService;

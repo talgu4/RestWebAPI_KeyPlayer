@@ -1,21 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using AutoMapper;
-using KeyPlayer.Data;
-using KeyPlayer.Data.Infrastructure;
-using KeyPlayer.Data.Repository;
-using KeyPlayer.Service;
 using WebAPI.Mapping;
+using KeyPlayer.Infrastructure;
+using KeyPlayer.Infrastructure.Interfaces;
 
 namespace WebAPI.App_Start
 {
+    internal class Container : KeyPlayer.Infrastructure.Interfaces.IContainer
+    {
+        private readonly ContainerBuilder _containerBuilder;
+
+        public Container(ContainerBuilder containerBuilder)
+        {
+            _containerBuilder = containerBuilder;
+        }
+
+        public KeyPlayer.Infrastructure.Interfaces.IContainer RegisterType<T>(ERegistrationType registrationType)
+        {
+            var x = _containerBuilder.RegisterType<T>();
+            InstancePerType(registrationType, x);
+            return this;
+        }
+        public KeyPlayer.Infrastructure.Interfaces.IContainer RegisterType<I, T>(ERegistrationType registrationType)
+        {
+            var x = _containerBuilder.RegisterType<T>().As<I>();
+            InstancePerType(registrationType, x);
+            return this;
+        }
+        private static void InstancePerType<T>(ERegistrationType registrationType,
+                                               Autofac.Builder.IRegistrationBuilder<T, Autofac.Builder.ConcreteReflectionActivatorData,
+                                               Autofac.Builder.SingleRegistrationStyle> x)
+        {
+            switch (registrationType)
+            {
+                case ERegistrationType.PerRequest:
+                    x.InstancePerRequest();
+                    break;
+                case ERegistrationType.Singleton:
+                    x.SingleInstance();
+                    break;
+                case ERegistrationType.LifetimeScope:
+                    x.InstancePerLifetimeScope();
+                    break;
+            }
+        }
+    }
+
+
+
     public class BootstrapperConfig
     {
         public static void Register()
@@ -32,31 +67,14 @@ namespace WebAPI.App_Start
 
         private static void RegisterServices(ContainerBuilder bldr)
         {
+            KeyPlayer.Infrastructure.Interfaces.IContainer c = new Container(bldr);
 
-            MapperConfiguration config = AutoMapperConfig.Configure();
-
+            var config = AutoMapperConfig.Configure();
             bldr.RegisterInstance(config.CreateMapper())
               .As<IMapper>()
               .SingleInstance();
-
-            bldr.RegisterType<KeyPlayerContext>()
-              .InstancePerRequest();
-
-            bldr.RegisterType<DbFactory>()
-                .As<IDbFactory>().InstancePerRequest();
-
-            bldr.RegisterType<PlayerService>()
-                .As<IPlayerService>().InstancePerRequest();
-            bldr.RegisterType<PlayerRepository>()
-                .As<IPlayerRepository>().InstancePerRequest();
-
-
-            bldr.RegisterType<TeamService>()
-                .As<ITeamsService>().InstancePerRequest();
-            bldr.RegisterType<TeamRepository>()
-                .As<ITeamService>().InstancePerRequest();
-
-
+            
+            c.RegisterParts();
 
         }
     }
